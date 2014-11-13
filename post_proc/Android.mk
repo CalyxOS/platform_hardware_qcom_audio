@@ -36,6 +36,11 @@ LOCAL_C_INCLUDES := \
 	external/tinyalsa/include \
 	$(call include-path-for, audio-effects)
 
+ifeq ($(TARGET_COMPILE_WITH_MSM_KERNEL),true)
+LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
+LOCAL_ADDITIONAL_DEPENDENCIES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
+endif
+
 LOCAL_HEADER_LIBRARIES += libhardware_headers
 LOCAL_HEADER_LIBRARIES += libsystem_headers
 include $(BUILD_SHARED_LIBRARY)
@@ -67,6 +72,11 @@ LOCAL_PROPRIETARY_MODULE := true
 LOCAL_C_INCLUDES := \
         hardware/qcom/audio/hal \
 	$(call include-path-for, audio-effects)
+
+ifeq ($(TARGET_COMPILE_WITH_MSM_KERNEL),true)
+LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
+LOCAL_ADDITIONAL_DEPENDENCIES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
+endif
 
 LOCAL_HEADER_LIBRARIES += libhardware_headers
 LOCAL_HEADER_LIBRARIES += libsystem_headers
@@ -100,6 +110,11 @@ LOCAL_C_INCLUDES := \
 	hardware/qcom/audio/hal \
 	system/media/audio/include/system \
 	$(call include-path-for, audio-effects)
+
+ifeq ($(TARGET_COMPILE_WITH_MSM_KERNEL),true)
+LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
+LOCAL_ADDITIONAL_DEPENDENCIES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
+endif
 
 LOCAL_HEADER_LIBRARIES += libhardware_headers
 LOCAL_HEADER_LIBRARIES += libsystem_headers
